@@ -1,0 +1,153 @@
+const products = [
+    {
+        id: 1,
+        name: "Naruto Uzumaki Manga Mirror",
+        price: "42.99",
+        character: "Naruto Uzumaki",
+        image: "https://i.pinimg.com/736x/ec/1e/e8/ec1ee8ad642f4a2d07e6aefdc3b113ce.jpg"
+    },
+    {
+        id: 2,
+        name: "Guts Berserk Manga Mirror",
+        price: "59.99",
+        character: "Guts",
+        image: "https://images.squarespace-cdn.com/content/v1/5ace4845e17ba35c9d8eb95e/faa77b6e-fd83-4c29-8a67-12915720d339/guts+with+sword.PNG"
+    },
+    {
+        id: 3,
+        name: "Satoru Gojo Jujutsu Kaisen Manga Mirror",
+        price: "54.99",
+        character: "Satoru Gojo",
+        image: "https://tse4.mm.bing.net/th/id/OIP.an08NHnldOYl6oXKUrjRuAHaDv?r=0&w=622&h=314&rs=1&pid=ImgDetMain&o=7&rm=3"
+
+    },
+    {
+        id: 4,
+        name: "Yuji Itadori Jujutsu Kaisen Manga Mirror",
+        price: "52.99",
+        character: "Yuji Itadori",
+        image: "https://64.media.tumblr.com/a1e3c3c74831d7cef34f4f483dd81385/71d682f144fa04aa-d7/s1280x1920/a9632934823f54855431af30c5f4632f2bc381ad.jpg"
+    },
+    {
+        id: 5,
+        name: "Maki Zenin Jujutsu Kaisen Manga Mirror",
+        price: "59.99",
+        character: "Maki Zenin",
+        image: "https://static.deltiasgaming.com/2024/12/Maki-2-1536x864.jpg"
+    },
+    {
+        id: 6,
+        name: "Itachu Uchiha Manga Mirror",
+        price: "47.99",
+        character: "Itachu Uchiha",
+        image: "https://i.pinimg.com/736x/83/dd/4f/83dd4f172fd158fcded04ef396057080.jpg"
+    },
+    {
+        id: 7,
+        name: "Kaori Itami Jujutsu Kaisen Manga Mirror",
+        price: "50.99",
+        character: "Kaori Itami",
+        image: "https://gamek.mediacdn.vn/133514250583805952/2024/9/30/jujutsu-kaisen-questions-yuji-1727683340418372725624-1727685393571-17276853936931927567325.jpg"
+    },
+    {
+        id: 8,
+        name: "Light Yagami Death Note Manga Mirror",
+        price: "50.99",
+        character: "Light Yagami",
+        image: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/03/Light-as-he-appears-in-the-Death-Note-Manga.jpg"
+    },
+    {
+        id: 9,
+        name: "L Lawliet Death Note Manga Mirror",
+        price: "50.99",
+        character: "L Lawliet",
+        image: "https://preview.redd.it/xnes3uqksi651.jpg?auto=webp&s=c159db6968fca2935308d821bb6b151015bbf874"
+    },
+    {
+        id: 10,
+        name: "Kakashi Hatake Naruto Manga Mirror",
+        price: "50.99",
+        character: "Kakashi Hatake",
+        image: "https://i.pinimg.com/736x/2a/30/b7/2a30b70140028c5ec7ee7550e92001a6.jpg"
+    }
+];
+const container = document.getElementById('product-container');
+
+products.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+    
+    productCard.innerHTML = `
+        <div class="image-wrap">
+            <img class="product-image" src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="details">
+            <h3>${product.name}</h3>
+            <p>Price: $${product.price}</p>
+            <button>Add to Cart</button>
+        </div>
+    `;
+    
+    container.appendChild(productCard);
+});
+
+const openFormBtn = document.getElementById('open-form-btn');
+const authModal = document.getElementById('auth-modal');
+const closeModal = document.getElementById('close-modal');
+const authForm = document.getElementById('auth-form');
+const switchToRegister = document.getElementById('switch-to-register');
+const switchToLogin = document.getElementById('switch-to-login');
+const modalTitle = document.getElementById('modal-title');
+const loginState = document.querySelector('.auth-state--login');
+const registerState = document.querySelector('.auth-state--register');
+
+function setAuthMode(mode) {
+    if (mode === 'register') {
+        authModal.classList.add('hidden');
+        // show modal then switch into register state to trigger transitions
+        authModal.classList.remove('hidden');
+        authModal.querySelectorAll('.auth-state').forEach(el => el.classList.remove('active'));
+        registerState.classList.add('active');
+        modalTitle.textContent = 'Vytvořit účet';
+        authModal.querySelector('.modal').classList.add('register-mode');
+        // focus first input
+        const first = registerState.querySelector('input');
+        if (first) first.focus();
+    } else {
+        authModal.querySelectorAll('.auth-state').forEach(el => el.classList.remove('active'));
+        loginState.classList.add('active');
+        modalTitle.textContent = 'Přihlášení';
+        authModal.querySelector('.modal').classList.remove('register-mode');
+        const first = loginState.querySelector('input');
+        if (first) first.focus();
+    }
+}
+
+openFormBtn.addEventListener('click', () => {
+    authModal.classList.remove('hidden');
+    setAuthMode('login');
+});
+
+closeModal.addEventListener('click', () => {
+    authModal.classList.add('hidden');
+});
+
+authModal.addEventListener('click', event => {
+    if (event.target === authModal) {
+        authModal.classList.add('hidden');
+    }
+});
+
+if (switchToRegister) switchToRegister.addEventListener('click', () => setAuthMode('register'));
+if (switchToLogin) switchToLogin.addEventListener('click', () => setAuthMode('login'));
+
+authForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const isRegister = !!registerState.classList.contains('active');
+    if (isRegister) {
+        alert('Registrace odeslána. (demo)');
+    } else {
+        alert('Přihlášení odesláno. (demo)');
+    }
+    authModal.classList.add('hidden');
+});

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><GH-Anime-Glass></title>
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="top-bar">
+            <div class="left-group">
+                <div class="logo">GH-Anime-Glass</div>
+
+                <form class="search-form" role="search" aria-label="Site search">
+                    <input class="search-input" type="search" placeholder="search mirrors..." aria-label="Search mirrors">
+                    <button class="search-button" aria-label="Search">
+                        <!-- white magnifier SVG -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 21l-4.35-4.35" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+
+                <nav class="main-nav">
+                    <a href="#">Home</a>
+                    <a href="#">Products</a>
+                    <a href="#">About</a>
+                </nav>
+            </div>
+
+            <button class="nav-button" id="open-form-btn">Login</button>
+        </div>
+        <div class="hero-content">
+            <h1>Premium Anime Mirrors</h1>
+            <p class="hero-description">Transform your space with our exclusive collection of high-quality anime character mirrors. Each piece is carefully crafted with vibrant
+                design that bring your favorite cha bring your favorite anime characters to life.</p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Anime Designs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>Fast Shipping</p>
+                </div>
+
+                <button class="explore-btn">Explore Collection</button>
+                <h1>Arigato</h1>
+            </div>
+        </div>
+
+        <div class="hero-media">
+            <img class="hero-image" src="https://th.bing.com/th/id/R.adb3435ddcf900351847a725494e1324?rik=BK21iZQ02ZLTwQ&riu=http%3a%2f%2ftwilightvisions.com%2fberserk%2fgriffith%2fvol12ch9brightest.jpg&ehk=OwayAiO%2f8hnkEH4W5o4cDXVY1MhH7iRHTIW8uCUjvZc%3d&risl=&pid=ImgRaw&r=0" alt="Featured Mirror">
+        </div>
+    </header>
+
+    <h2 style="text-align:center; margin-top: 40px;">Featured Mirrors</h2>
+    <div id="product-container" class="product-grid"></div>
+    
+    <section class="quote-section">
+        <div class="quote-content">
+            <div class="quote-image-wrapper">
+                <img src="c:\Users\Admin\Pictures\d3d8fd5e5b715ba9c4d5ace3f7034d27.jpg">
+            </div>
+            <div class="quote-text">
+                <h2>Geto Suguru</h2>
+                <h3>"You're late as usual, Satoru"</h3>
+            </div>
+        </div>
+    </section>
+
+    
+
+    
+
+    <div class="modal-overlay hidden" id="auth-modal">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-header">
+                <h2 id="modal-title">Přihlášení</h2>
+                <button class="close-modal" id="close-modal" aria-label="Close modal">×</button>
+            </div>
+            <form id="auth-form">
+                <!-- LOGIN STATE -->
+                <div class="auth-state auth-state--login active">
+                    <div class="form-grid">
+                        <label class="form-group">
+                            <span>Email</span>
+                            <input class="form-control" type="email" name="email" placeholder="you@example.com" required>
+                        </label>
+                        <label class="form-group">
+                            <span>Heslo</span>
+                            <input class="form-control" type="password" name="password" placeholder="••••••••" required>
+                        </label>
+                        <label class="form-group remember">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span>Zapamatovat si mě</span>
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-button">Login</button>
+                    </div>
+                    <div class="register-note">
+                        <span>Nemáte účet?</span>
+                        <button type="button" class="link-button" id="switch-to-register">Vytvořit účet</button>
+                    </div>
+                </div>
+
+                <!-- REGISTER STATE -->
+                <div class="auth-state auth-state--register">
+                    <div class="form-grid">
+                        <label class="form-group">
+                            <span>Email</span>
+                            <input class="form-control" type="email" name="reg_email" placeholder="you@example.com" required>
+                        </label>
+                        <label class="form-group">
+                            <span>Heslo</span>
+                            <input class="form-control" type="password" name="reg_password" placeholder="••••••••" required>
+                        </label>
+                        <label class="form-group">
+                            <span>Potvrzení hesla</span>
+                            <input class="form-control" type="password" name="reg_confirm" placeholder="••••••••" required>
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-button">Create Account</button>
+                    </div>
+                    <div class="register-note">
+                        <span>Už máte účet?</span>
+                        <button type="button" class="link-button" id="switch-to-login">Přihlásit se</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>s
