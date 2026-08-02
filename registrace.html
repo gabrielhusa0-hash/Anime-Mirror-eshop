@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrace &ndash; GH-Anime-Glass</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="registration-page">
+    <main class="registration-section">
+        <div class="registration-container">
+
+            <div id="registration-success" class="registration-success hidden">
+                <h2>Registrace úspěšná</h2>
+                <p>Vítejte, <span id="success-name"></span>!</p>
+                <p class="success-sub">Účet byl vytvořen pro e-mail <span id="success-email"></span>.</p>
+                <a href="index.html" class="submit-button link-back">Zpět na hlavní stránku</a>
+            </div>
+
+            <form id="registration-form" class="registration-form" novalidate>
+                <h2>Registrace</h2>
+
+                <div class="form-field">
+                    <label for="reg-jmeno">Jméno</label>
+                    <input type="text" id="reg-jmeno" name="jmeno" placeholder="Zadejte jméno" autocomplete="given-name">
+                    <span class="field-error" data-error-for="jmeno"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="reg-prijmeni">Příjmení</label>
+                    <input type="text" id="reg-prijmeni" name="prijmeni" placeholder="Zadejte příjmení" autocomplete="family-name">
+                    <span class="field-error" data-error-for="prijmeni"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" name="email" placeholder="Zadejte e-mailovou adresu" autocomplete="email">
+                    <span class="field-error" data-error-for="email"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="reg-heslo">Heslo</label>
+                    <div class="password-field">
+                        <input type="password" id="reg-heslo" name="heslo" placeholder="Zadejte heslo" autocomplete="new-password">
+                        <button type="button" class="toggle-password" aria-label="Zobrazit heslo">
+                            <svg class="eye-icon eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                            <svg class="eye-icon eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" hidden>
+                                <path d="M3 3l18 18M10.6 10.7a3 3 0 0 0 4.2 4.2M6.6 6.7C4 8.3 2 12 2 12s4 7 11 7c1.8 0 3.4-.4 4.7-1.1M17.4 17.3C19.9 15.7 22 12 22 12s-2-5-6.7-6.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="password-strength-bar"><span></span></div>
+                        <p class="password-strength-label">&nbsp;</p>
+                    </div>
+                    <span class="field-error" data-error-for="heslo"></span>
+                </div>
+
+                <label class="checkbox-row">
+                    <input type="checkbox" name="newsletter" id="reg-newsletter">
+                    Odebírat newsletter
+                </label>
+
+                <button type="submit" class="submit-button">Registrovat</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

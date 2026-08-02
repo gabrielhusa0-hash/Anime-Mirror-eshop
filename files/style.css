@@ -319,192 +319,389 @@ body {
     background: #5f4ee2;
 }
 
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(4px);
-    display: grid;
-    place-items: center;
-    padding: 20px;
-    z-index: 100;
-}
+/* =========================================================
+   AUTH MODAL - přihlášení / registrace / potvrzení
+   Modální okno přes celou obrazovku, světlý minimalistický
+   design (viz předloha).
+   ========================================================= */
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-.modal {
-    width: min(640px, 96%);
-    max-width: 720px;
-    border-radius: 22px;
-    background: rgba(28, 28, 34, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
-    padding: 28px 30px;
+/* =========================================================
+   KOŠÍK
+   ========================================================= */
+
+.cart-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal-header {
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: #7967ff;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 18px;
-}
-
-.modal-header h2 {
-    margin: 0;
-    font-size: 1.4rem;
-}
-
-.modal-header p {
-    margin: 8px 0 0;
-    color: #d0d0f0;
-    font-size: 0.95rem;
-}
-
-.close-modal {
-    background: transparent;
-    border: 0;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
+    justify-content: center;
     line-height: 1;
 }
 
-.form-grid {
-    display: grid;
+.cart-modal-box {
+    max-width: 460px;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #6a6a72;
+    padding: 20px 0;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
     gap: 14px;
+    max-height: 340px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ececef;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.cart-item-image {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background: #f0f0f2;
+}
+
+.cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item-info h4 {
+    margin: 0 0 4px;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-item-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #6a6a72;
+}
+
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    border: 1px solid #d6d6db;
+    background: #fff;
+    color: #1a1a1a;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-btn:hover {
+    background: #f5f5f7;
+}
+
+.qty-value {
+    min-width: 16px;
+    text-align: center;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.cart-item-remove {
+    background: transparent;
+    border: none;
+    color: #b0b0b8;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 6px;
+}
+
+.cart-item-remove:hover {
+    color: #e0433f;
+}
+
+.cart-summary {
+    border-top: 1px solid #e4e4e8;
+    padding-top: 16px;
+    margin-top: 4px;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #111;
+    margin-bottom: 16px;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 18, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    max-height: 92vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    padding: 36px 32px;
+    box-sizing: border-box;
+}
+
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: 0;
+    color: #8a8a92;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.close-modal:hover {
+    color: #1a1a1a;
+}
+
+.auth-title {
+    text-align: center;
+    margin: 0 0 24px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Auth modal states - jen jeden stav viditelný najednou */
+.auth-state { display: none; }
+.auth-state.active { display: block; }
+
+.auth-form {
+    display: grid;
+    gap: 18px;
 }
 
 .form-group {
     display: grid;
     gap: 8px;
-    color: #dcdcff;
-    font-size: 0.95rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a1a1a;
 }
 
 .form-control {
     width: 100%;
-    padding: 14px 16px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.06);
-    color: #eaeaf0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #d6d6db;
+    background: #ffffff;
+    color: #111;
+    font-size: 0.95rem;
     outline: none;
-    transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease, transform 150ms ease;
+    box-sizing: border-box;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 
 .form-control::placeholder {
-    color: #6a6b78;
+    color: #9a9aa2;
 }
 
 .form-control:focus {
     border-color: #7967ff;
-    background: #ffffff; /* white bubble */
-    color: #0f0f12; /* black text when typing */
-    box-shadow: 0 12px 40px rgba(121, 103, 255, 0.14);
+    box-shadow: 0 0 0 3px rgba(121, 103, 255, 0.12);
 }
 
-.form-control::placeholder { color: #9b9ba6; }
-
-/* Auth modal states */
-.auth-state { display: none; }
-.auth-state.active { display: block; }
-.auth-state .remember {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #dcdcff;
-    font-size: 0.95rem;
-}
-.auth-state .remember input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #7967ff;
+.form-control.is-invalid {
+    border-color: #e0433f;
 }
 
-.modal.register-mode .auth-state--login { display: none; }
-.modal.register-mode .auth-state--register { display: block; }
-
-/* make the submit button look like a white pill and keep hover subtle */
-.submit-button {
-    background: #ffffff;
-    color: #0f0f12;
-    font-weight: 700;
-}
-
-/* Neutralize browser validation flashes and any red invalid styling */
-input:invalid,
-textarea:invalid,
-select:invalid {
-    box-shadow: none !important;
-    outline: none !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
-    color: #eaeaf0 !important;
-    background: rgba(255, 255, 255, 0.06) !important;
-    animation: none !important;
-}
-
-input:focus:invalid,
-textarea:focus:invalid,
-select:focus:invalid {
-    box-shadow: 0 12px 40px rgba(121, 103, 255, 0.14) !important;
-    border-color: #7967ff !important;
-}
-
-input,
-textarea,
-select {
-    caret-color: #ffffff;
-}
-
-.submit-button:hover {
-    background: #e8e8eb;
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(224, 67, 63, 0.12);
 }
 
 .form-actions {
-    margin-top: 18px;
+    margin-top: 4px;
 }
 
 .submit-button {
+    display: block;
     width: 100%;
     padding: 14px 18px;
-    border-radius: 14px;
+    border-radius: 8px;
     border: none;
-    background: #f2f2f5;
-    color: #111118;
+    background: #52525b;
+    color: #ffffff;
     font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
     cursor: pointer;
+    transition: background-color 150ms ease;
 }
 
 .submit-button:hover {
-    background: #e8e8eb;
+    background: #3f3f46;
 }
 
 .register-note {
-    margin-top: 16px;
+    margin-top: 18px;
     display: flex;
     justify-content: center;
-    gap: 8px;
-    color: #d1d1db;
-    font-size: 0.95rem;
+    gap: 6px;
+    color: #4a4a52;
+    font-size: 0.9rem;
 }
 
 .link-button {
     background: transparent;
     border: none;
-    color: #ffffff;
+    color: #7967ff;
     cursor: pointer;
     font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0;
 }
 
 .link-button:hover {
     text-decoration: underline;
 }
 
-.submit-button:hover {
-    background: #5f4ee2;
+.newsletter-note {
+    margin: -4px 0 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #6a6a72;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0;
+    color: #9a9aa2;
+    font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e4e4e8;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #e4e4e8;
+    background: #fff;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.social-btn:hover {
+    background: #f5f5f7;
+    transform: translateY(-1px);
+}
+
+/* Stav: potvrzení registrace */
+.success-content {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.welcome-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.success-content h2 {
+    margin: 0 0 24px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.success-content .submit-button {
+    max-width: 280px;
+    margin: 0 auto;
 }
 
 .product-grid {
@@ -587,92 +784,8 @@ select {
 }
 
 /* =========================================================
-   REGISTRACE - minimalistický formulář (viz předloha)
+   SDÍLENÉ PRVKY FORMULÁŘŮ (auth modal)
    ========================================================= */
-
-.registration-section {
-    display: flex;
-    justify-content: center;
-    padding: 60px 20px;
-}
-
-.registration-page {
-    background-color: #f5f5f7;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.registration-page .registration-section {
-    padding: 20px;
-    width: 100%;
-}
-
-.registration-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 36px 32px;
-    background-color: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    color: #1a1a1a;
-    box-sizing: border-box;
-}
-
-.registration-form h2,
-.registration-success h2 {
-    text-align: center;
-    margin: 0 0 28px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #111;
-}
-
-.form-field {
-    margin-bottom: 20px;
-}
-
-.form-field label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #1a1a1a;
-}
-
-.registration-form input[type="text"],
-.registration-form input[type="email"],
-.registration-form input[type="password"] {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #d6d6db;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    color: #111;
-    background-color: #fff;
-    box-sizing: border-box;
-    outline: none;
-    transition: border-color 150ms ease, box-shadow 150ms ease;
-}
-
-.registration-form input::placeholder {
-    color: #9a9aa2;
-}
-
-.registration-form input:focus {
-    border-color: #7967ff;
-    box-shadow: 0 0 0 3px rgba(121, 103, 255, 0.12);
-}
-
-.registration-form input.is-invalid {
-    border-color: #e0433f;
-}
-
-.registration-form input.is-invalid:focus {
-    box-shadow: 0 0 0 3px rgba(224, 67, 63, 0.12);
-}
 
 .field-error {
     display: block;
@@ -718,7 +831,7 @@ select {
 .password-strength-bar {
     height: 4px;
     border-radius: 2px;
-    background: #ececef;
+    background: #ececef; /* šedý track */
     overflow: hidden;
 }
 
@@ -727,14 +840,31 @@ select {
     height: 100%;
     width: 0%;
     border-radius: 2px;
-    background: #e0433f;
-    transition: width 200ms ease, background-color 200ms ease;
+    background-color: #ececef;
+    transition: width 250ms ease, background-color 250ms ease;
 }
 
 .password-strength-label {
     margin: 6px 0 0;
     font-size: 0.8rem;
     color: #8a8a92;
+}
+
+/* Úrovně síly hesla - třída se přidává na .password-strength-bar (track),
+   barva i šířka se pak aplikují na vnitřní <span> (výplň) */
+.password-strength-bar.level-1 span {
+    width: 33%;
+    background-color: #e0433f; /* slabé */
+}
+
+.password-strength-bar.level-2 span {
+    width: 66%;
+    background-color: #f39c12; /* střední */
+}
+
+.password-strength-bar.level-3 span {
+    width: 100%;
+    background-color: #2ecc71; /* silné */
 }
 
 /* Checkbox - newsletter */
@@ -755,51 +885,46 @@ select {
     cursor: pointer;
 }
 
-/* Tlačítko registrace */
-.registration-form .submit-button,
-.registration-success .submit-button {
-    display: block;
-    width: 100%;
-    padding: 14px 18px;
-    border: none;
-    border-radius: 8px;
-    background-color: #52525b;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 150ms ease, transform 150ms ease;
-}
-
-.registration-form .submit-button:hover,
-.registration-success .submit-button:hover {
-    background-color: #3f3f46;
-}
-
-/* Úspěšná registrace (registrace.html) */
-.registration-success {
-    text-align: center;
-}
-
-.registration-success p {
-    color: #4a4a52;
-    margin: 0 0 8px;
-}
-
-.registration-success .success-sub {
-    margin-bottom: 24px;
-    font-size: 0.9rem;
-}
-
-.registration-success.hidden,
-.registration-form.hidden {
-    display: none;
-}
-
 @media (max-width: 480px) {
-    .registration-container {
+    .modal {
         padding: 28px 20px;
     }
+}
+
+.hidden {
+    display: none !important;
+}
+/* Kroky v modálu košíku (jen jeden visitelný najednou) */
+.cart-step { display: none; }
+.cart-step.active { display:block; }
+
+.checkout-card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.checknout-back-btn {
+    display: block;
+    margin: 12px auto 0;  
+}
+
+.order-number {
+    margin: 0 0 24px;
+    font-weight: 700;
+    font-size: 1.3rem;
+   color: #111; 
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.payment-icon {
+    width: 44px;
+    height: 30px;
 }

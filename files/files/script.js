@@ -261,6 +261,22 @@ if (productContainer) {
         });
     }
 
+/* --- Kontrola přihlášení při startu --- */
+const uzivatel = localStorage.getItem("prihlasenyUzivatel");
+if (uzivatel) {
+    const loginBtn = document.getElementById("loginButtonID");
+    const userEmailSpan = document.getElementById("userEmailID");
+    if (loginBtn) loginBtn.style.display = "none";
+    if (userEmailSpan) userEmailSpan.textContent = uzivatel;
+}
+const logounBtn = document.getElementById("loginBtn");
+if (logounBtn) {
+    logounBtn.addEventListener("click", () => {
+        localStorage.removeItem("prihlasenyUzivatel");
+        location.reload();
+    });
+}
+
     /* --- Automatické otevření modálu (např. ?auth=register) --- */
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('auth') === 'register') {

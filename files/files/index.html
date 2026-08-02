@@ -32,6 +32,14 @@
                 </nav>
             </div>
 
+            <button class="nav-button cart-button" id="open-cart-btn" aria-label="Košík">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="10" cy="21" r="1.4" fill="currentColor"/>
+                    <circle cx="18" cy="21" r="1.4" fill="currentColor"/>
+                </svg>
+                <span class="cart-badge hidden" id="cart-badge">0</span>
+            </button>
             <button class="nav-button" id="open-form-btn">Login</button>
             <div id="user-profile" style="display: none; align-items: center; gap: 8px;">
     <span style="display:inline-flex; align-items:center; justify-content:center;">
@@ -78,7 +86,7 @@
     <section class="quote-section">
         <div class="quote-content">
             <div class="quote-image-wrapper">
-                <img src="c:\Users\Admin\Pictures\d3d8fd5e5b715ba9c4d5ace3f7034d27.jpg">
+                <img src="https://i.pinimg.com/originals/cd/28/d7/cd28d7be90ca874d4a7794d6e0fca603.jpg">
             </div>
             <div class="quote-text">
                 <h2>Geto Suguru</h2>
@@ -119,32 +127,51 @@
         <!-- STAV: PŘIHLÁŠENÍ -->
         <div class="auth-state auth-state--login active" data-state="login">
             <h2 class="auth-title">Přihlášení</h2>
-            <form class="auth-form" id="login-form" novalidate>
+            <form class="auth-form" id="login-form" novalidate autocomplete="off">
                 <div class="form-group">
                     <label for="login-email">E-mail</label>
-                    <input class="form-control" type="email" id="login-email" name="login_email" placeholder="Zadejte e-mailovou adresu">
+                    <input class="form-control" type="email" id="login-email" name="login_email" placeholder="Zadejte e-mailovou adresu" autocomplete="off">
                     <span class="field-error" data-error-for="login_email"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="login-heslo">Heslo</label>
-                    <div class="password-field">
-                        <input class="form-control" type="password" id="login-heslo" name="login_password" placeholder="Zadejte heslo">
+                    <div class="password-field"> 
+                        <input class="form-control" type="password" id="login-heslo" name="login_password" placeholder="Zadejte heslo" autocomplete="new-password">
                         <button type="button" class="toggle-password" aria-label="Zobrazit heslo">
                           
                             <svg class="eye-icon eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" hidden>
                                 <path d="M3 3l18 18M10.6 10.7a3 3 0 0 0 4.2 4.2M6.6 6.7C4 8.3 2 12 2 12s4 7 11 7c1.8 0 3.4-.4 4.7-1.1M17.4 17.3C19.9 15.7 22 12 22 12s-2-5-6.7-6.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                
                             </svg>
                         </button>
                     </div>
+                    
                     <span class="field-error" data-error-for="login_password"></span>
                 </div>
+                
 
                 <div class="form-actions">
-                    <button type="submit" class="submit-button">Přihlásit se</button>
+                <button type="submit" class="submit-button">Přihlásit se</button>
+                <div class="auth-divider" style="text-align: center; margin-top: 25px; margin-bottom: 15px; color: #888; position: relative;"><span style="background: #fff; padding: 0 10px; font-size: 13px;">nebo</span></div>
                 </div>
+                
             </form>
-
+              <div class="social-buttons">
+                <button type="button" class="social-btn" id="google-login-btn" aria-label="Pokračovat přes Google">
+                    <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+                        <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.4 6.1 29.5 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+                        <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.6 18.9 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.4 6.1 29.5 4 24 4c-7.5 0-14 4.3-17.7 10.7z"/>
+                        <path fill="#4CAF50" d="M24 44c5.3 0 10.1-2 13.7-5.3l-6.3-5.2C29.4 35.4 26.8 36 24 36c-5.3 0-9.7-3.3-11.3-8l-6.6 5.1C9.9 39.6 16.4 44 24 44z"/>
+                        <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.3 5.5l6.3 5.2C40.5 36.2 44 30.6 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+                    </svg>
+                </button>
+                <button type="button" class="social-btn" id="facebook-login-btn" aria-label="Pokračovat přes Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
+                        <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
+                    </svg>
+                </button>
+            </div>
             <p class="register-note">Nemáte účet? <button type="button" class="link-button" id="switch-to-register">Vytvořit účet</button></p>
         </div>
 
@@ -166,7 +193,7 @@
 
                 <div class="form-group">
                     <label for="reg-email">E-mail</label>
-                    <input class="form-control" type="email" id="reg-email" name="email" placeholder="Zadejte e-mailovou adresu" autocomplete="email">
+                    <input class="form-control" type="email" id="reg-email" name="email" placeholder="Zadejte e-mailovou adresu" autocomplete="username">
                     <span class="field-error" data-error-for="email"></span>
                 </div>
 
@@ -203,7 +230,7 @@
             <div class="divider"><span>nebo</span></div>
 
             <div class="social-buttons">
-                <button type="button" class="social-btn" id="google-login-btn" aria-label="Pokračovat přes Google">
+                <button type="button" class="social-btn" id="google-register-btn" aria-label="Pokračovat přes Google">
                     <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
                         <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.4 6.1 29.5 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
                         <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.6 18.9 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.4 6.1 29.5 4 24 4c-7.5 0-14 4.3-17.7 10.7z"/>
@@ -211,7 +238,7 @@
                         <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.3 5.5l6.3 5.2C40.5 36.2 44 30.6 44 24c0-1.2-.1-2.4-.4-3.5z"/>
                     </svg>
                 </button>
-                <button type="button" class="social-btn" id="facebook-login-btn" aria-label="Pokračovat přes Facebook">
+                <button type="button" class="social-btn" id="facebook-register-btn" aria-label="Pokračovat přes Facebook">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
                         <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
                     </svg>
@@ -226,7 +253,7 @@
         <!-- STAV: POTVRZENÍ REGISTRACE -->
         <div class="auth-state auth-state--success" data-state="success">
             <div class="success-content">
-                <img src="image-welcome.jpg" alt="Vítej" class="welcome-image" style="width: 370px; height: auto; border-radius: 0;">
+                <img src="files/image-welcome.jpg" alt="Vítej" class="welcome-image" style="width: 370px; height: auto; border-radius: 0;">
                 <h2>Vítej v GH-Anime-Glass!</h2>
                 <button type="button" class="submit-button" id="back-to-home-btn">Zpět na hlavní stránku</button>
             </div>
@@ -235,10 +262,32 @@
         <!-- STAV: ODHLÁŠENÍ -->
         <div class="auth-state auth-state--logout" data-state="logout">
             <div class="success-content">
-                <img src="image-exit.jpg" alt="Měj se!" class="welcome-image" style="width: 370px; height: auto; border-radius: 0;">
+                <img src="files/image-exit.jpg" alt="Měj se!" class="welcome-image" style="width: 370px; height: auto; border-radius: 0;">
                 <h2>Měj se!</h2>
                 <button type="button" class="submit-button" id="back-to-home-from-logout-btn">Zpět na hlavní stránku</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     KOŠÍK
+     ========================================================= -->
+<div class="modal-overlay hidden" id="cart-modal">
+    <div class="modal cart-modal-box" id="cart-modal-box">
+        <button class="close-modal" id="close-cart-modal" aria-label="Zavřít">&times;</button>
+        <h2 class="auth-title">Košík</h2>
+
+        <p class="cart-empty hidden" id="cart-empty">Váš košík je prázdný.</p>
+
+        <div class="cart-items" id="cart-items"></div>
+
+        <div class="cart-summary hidden" id="cart-summary">
+            <div class="cart-total-row">
+                <span>Celkem</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button type="button" class="submit-button" id="cart-checkout-btn">Dokončit objednávku</button>
         </div>
     </div>
 </div>
