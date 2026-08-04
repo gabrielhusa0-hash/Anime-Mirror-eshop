@@ -6,7 +6,7 @@ Zatím je hotový **pouze frontend** (HTML, CSS, vanilla JavaScript). Backend a 
 
 ## 🔗 Live demo
 
-*(sem doplním odkaz po nasazení na Netlify)*
+delicate-kitsune-3a77af.netlify.app
 
 ## Co web umí
 
