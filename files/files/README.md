@@ -8,6 +8,7 @@ Zatím je hotový **pouze frontend** (HTML, CSS, vanilla JavaScript). Backend a 
 
 delicate-kitsune-3a77af.netlify.app
 
+
 ## Co web umí
 
 - **Přihlášení a registrace přes Google** (Firebase Authentication)
